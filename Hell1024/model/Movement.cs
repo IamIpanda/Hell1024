@@ -42,15 +42,12 @@ namespace Hell1024.model
             return action;
         }
 
-        // TODO: Finish it.
-        public void Run()
+        public List<Action> Pop()
         {
-
-        }
-
-        public void RunList(List<Action> list)
-        {
-            
+            if (Actions.Count == 0) return null;
+            var answer = Actions[0];
+            Actions.RemoveAt(0);
+            return answer;
         }
 
         public override string ToString()

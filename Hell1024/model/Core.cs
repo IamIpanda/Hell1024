@@ -9,10 +9,11 @@ namespace Hell1024.model
     public class Core
     {
         public int GameSize { get; private set; }
-        public int Width { get { return GameSize; } }
-        public int Height { get { return 2 * GameSize + 1; } }
+        public int Width => 2 * GameSize + 1;
+        public int Height => GameSize;
         public long[, ] GameData;
-        public int Score { get; set; }
+        public long Score { get; set; } = 0;
+        public long ToAddScore { get; set; } = 0;
 
 
         public const long None = 0;
@@ -55,7 +56,7 @@ namespace Hell1024.model
         {
             set
             {
-                for (var i = 0; i < Width; i++)
+                for (var i = 0; i < Width && i < value.Count; i++)
                     GameData[i, y] = value[i];
             }
         }

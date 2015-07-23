@@ -1,4 +1,22 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converter="clr-namespace:Hell1024.views.converter">
+    <converter:TimeConverter x:Key="Converter" />
+    <Storyboard x:Key="DeleteStoryboard">
+        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=2, RelativeSource={RelativeSource Self}}" />
+    </Storyboard>
     
+    <Storyboard x:Key="AppearStoryboard">
+        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=2, RelativeSource={RelativeSource Self}}" />
+    </Storyboard>
+    
+    <Storyboard x:Key="EmphasizeStoryboard" TargetProperty="Margin">
+        <ThicknessAnimation From="0" To="-5" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=2, RelativeSource={RelativeSource Self}}" />
+        <ThicknessAnimation From="-5" To="0" BeginTime="0:0:0.1" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=2, RelativeSource={RelativeSource Self}}" />
+    </Storyboard>
+
+    <Storyboard x:Key="ScoreAdded">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=4, RelativeSource={RelativeSource Self}}" />
+        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=4, RelativeSource={RelativeSource Self}}" />
+    </Storyboard>
 </ResourceDictionary>

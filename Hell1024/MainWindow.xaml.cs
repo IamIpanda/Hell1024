@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Hell1024.model;
+using Hell1024.views.controls.help;
 
 namespace Hell1024
 {
@@ -24,21 +25,47 @@ namespace Hell1024
         public MainWindow()
         {
             InitializeComponent();
-
-            var c = new Core(5);
-            c[0] = new List<long>() { 2, 2, 2, 0, 2 };
-            c[1] = new List<long>() { 2, 2, 0, 2, 2 };
-            c[2] = new List<long>() { 2, 0, 2, 0, 2 };
-            c[3] = new List<long>() { 0, 0, 0, 2, 2 };
-            c[4] = new List<long>() { 0, 0, 2, 4, 2 };
-            c[5] = new List<long>() { 0, -1, 0, -1, -1 };
-            c[6] = new List<long>() { -2, -2, -2, -2, -2 };
-            c[7] = new List<long>() { -2, -2, -2, -2, -2 };
-            c[8] = new List<long>() { -2, -2, -2, -2, -2 };
-            c[9] = new List<long>() { -2, -2, -2, -2, -2 };
-            c[10] = new List<long>() { -2, -2, -2, -2, -2 };
-
+            
+            var c = Game.Instance.Core;
             pg.Value = c;
+            Game.Instance.NewGame();
+            pg.ExecuteAnimationList();
+        }
+
+        private void MainWindow_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (pg.isBusy) return;
+            switch (e.Key) {
+                case Key.Up:
+                    pg.MoveUp();
+                    checkScore();
+                    break;
+                case Key.Down:
+                    pg.MoveDown();
+                    checkScore();
+                    break;
+                case Key.Left: 
+                    pg.MoveLeft();
+                    checkScore();
+                    break;
+                case Key.Right:
+                    pg.MoveRight();
+                    checkScore();
+                    break;
+            }
+        }
+
+        public void checkScore()
+        {
+            if (Game.Instance.Core.ToAddScore == 0) return;
+            Score.ToAddValue = Game.Instance.Core.ToAddScore;
+            Game.Instance.Core.ToAddScore = 0;
+        }
+
+        private void Border_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Game.Instance.NewGame();
+            pg.ExecuteAnimationList();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,9 +34,27 @@ namespace Hell1024.views.controls
             set
             {
                 core = value;
-                help.PlaygroundHelp.GenerateGrid(Grid, value); }
+                Blocks = help.PlaygroundHelp.GenerateGrid(Grid, value); }
         }
 
+#pragma warning disable 649
         private Block[,] Blocks;
+#pragma warning restore 649
+
+        public Block this[int i, int j]
+        {
+            get
+            {
+                if (i < 0 || i >= BlocksWidth || j < 0 || j >= BlocksHeight)
+                    return null;
+                return Blocks[i, j];
+            }
+        }
+
+        public int BlocksWidth => Blocks.GetLength(0);
+
+        public int BlocksHeight => Blocks.GetLength(1);
+
+        public bool isBusy { get; internal set; } = false;
     }
 }

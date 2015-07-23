@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hell1024.model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace Hell1024.model.Tests
 {
     [TestClass()]

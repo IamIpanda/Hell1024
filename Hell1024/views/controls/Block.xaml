@@ -8,13 +8,28 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <converters:IntToStringConverter x:Key="IntToStringConverterConverter" />
+        <converters:BlockVauePresetationConverter x:Key="IntToStringConverterConverter" />
+        <converters:ColorDescriptionConverter x:Key="ColorDescriptionConverter" />
     </UserControl.Resources>
-    <Border CornerRadius="5" BorderThickness="0" Background="#FFDE7F3D">
-        <Viewbox>
-            <TextBlock x:Name="Main"
-                       Text="{Binding Converter={StaticResource IntToStringConverterConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Block}}, Path=Value}"
-                       FontFamily="{Binding Mode=OneWay, Source={StaticResource FontFamily}}" />
-        </Viewbox>
-    </Border>
+    <Grid>
+        <!-- ReSharper disable InconsistentNaming -->
+        <Border x:Name="traveller" CornerRadius="5" BorderThickness="2">
+            <Border.Background>
+                <SolidColorBrush Color="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Block}}, Path=ColorDescription.BackColor}" />
+            </Border.Background>
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Block}}, Path=ColorDescription.BorderColor}" />
+            </Border.BorderBrush>
+            <!-- ReSharper restore InconsistentNaming -->
+            <Viewbox x:Name="viewbox" Margin="5">
+                <TextBlock x:Name="Main"
+                           Text="{Binding Converter={StaticResource IntToStringConverterConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Block}}, Path=Value}"
+                           FontFamily="{Binding Mode=OneWay, Source={StaticResource FontFamily}}">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Block}}, Path=ColorDescription.ForeColor}" />
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </Viewbox>
+        </Border>
+    </Grid>
 </UserControl>

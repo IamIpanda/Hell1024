@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hell1024</RootNamespace>
     <AssemblyName>Hell1024</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -73,9 +73,15 @@
     </ApplicationDefinition>
     <Compile Include="model\Action.cs" />
     <Compile Include="model\Behave.cs" />
+    <Compile Include="model\ColorDescription.cs" />
     <Compile Include="model\Core.cs" />
+    <Compile Include="model\Door.cs" />
     <Compile Include="model\Game.cs" />
     <Compile Include="model\Movement.cs" />
+    <Compile Include="resource\Animation.cs" />
+    <Compile Include="views\controls\BackgroundBlock.xaml.cs">
+      <DependentUpon>BackgroundBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\controls\Block.xaml.cs">
       <DependentUpon>Block.xaml</DependentUpon>
     </Compile>
@@ -83,8 +89,14 @@
     <Compile Include="views\controls\Playground.xaml.cs">
       <DependentUpon>Playground.xaml</DependentUpon>
     </Compile>
-    <Compile Include="views\converter\IntToStringConverter.cs" />
+    <Compile Include="views\controls\Score.xaml.cs">
+      <DependentUpon>Score.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\converter\ColorDescriptionConverter.cs" />
+    <Compile Include="views\converter\BlockVauePresetationConverter.cs" />
+    <Compile Include="views\converter\ToStringConverter.cs" />
     <Compile Include="views\converter\PostiveBackgroundConverter.cs" />
+    <Compile Include="views\converter\TimeConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,11 +121,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="views\controls\BackgroundBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\controls\Block.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\controls\Playground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\controls\Score.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

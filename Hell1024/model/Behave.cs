@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Controls.Primitives;
 
@@ -50,6 +51,7 @@ namespace Hell1024.model
                             // 合并
                             answer.Execute(TargetMovement.Move(x, y, to.X, to.Y));
                             answer.Execute(TargetMovement.Appear(to.X, to.Y, 2 * to_number, 1));
+                            TargetCore.ToAddScore += Math.Abs(to_number * 2);
                             record[to.X, to.Y] = answer[to.X, to.Y]; // 记录
                             answer[to.X, to.Y] = Core.BackGround; // 此位置已行动
                         }
@@ -58,6 +60,7 @@ namespace Hell1024.model
                             // 湮灭
                             answer.Execute(TargetMovement.Move(x, y, to.X, to.Y));
                             answer.Execute(TargetMovement.Disappear(to.X, to.Y, 1));
+                            TargetCore.ToAddScore += Math.Abs(to_number * 4);
                             record[to.X, to.Y] = Core.WillDelete; // 记录
                             answer[to.X, to.Y] = Core.BackGround; // 此位置已行动
                         }
@@ -103,9 +106,44 @@ namespace Hell1024.model
             
         }
 
-        public void Generate()
+        readonly Random random = new Random();
+        public void Generate(List<long> type, Rectangle area, int moment = 1)
         {
-            
+            var target = type[random.Next(0, type.Count)];
+            var p = new List<Point>();
+            for(var i = area.Left; i <= area.Right; i++)
+                for (var j = area.Top; j <= area.Bottom; j++)
+                    if (TargetCore[i, j] == Core.None)
+                        p.Add(new Point(i, j));
+            if (p.Count == 0) return;
+            var point = p[random.Next(0, p.Count)];
+            TargetMovement.Appear(point.X, point.Y, target, moment);
+        }
+
+        public void Clear()
+        {
+            for(var i = 0; i < TargetCore.Width; i++)
+                for (var j = 0; j < TargetCore.Height; j++)
+                    TargetCore[i, j] = 0;
+        }
+
+        public void Clear(int moment)
+        {
+            for (var i = 0; i < TargetCore.Width; i++)
+                for (var j = 0; j < TargetCore.Height; j++)
+                    if (TargetCore[i, j] != Core.None && TargetCore[i,j] != Core.BackGround)
+                        TargetMovement.Disappear(i, j, moment);
+        }
+
+        public void NewGame(Dictionary<List<long>, Rectangle> inits, int moment = 0)
+        {
+            foreach (var pair in inits)
+            {
+                var i = random.Next(pair.Value.Left, pair.Value.Right);
+                var j = random.Next(pair.Value.Top, pair.Value.Bottom);
+                var value = pair.Key[random.Next(0, pair.Key.Count)];
+                TargetMovement.Appear(i, j, value, moment);
+            }
         }
     }
 }

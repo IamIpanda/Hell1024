@@ -2,12 +2,37 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:Hell1024.views.controls" x:Class="Hell1024.MainWindow"
-        Title="MainWindow" Height="802" Width="525">
+        Title="地狱 1024" Height="400" Width="600" KeyUp="MainWindow_OnKeyUp">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-        <controls:Playground x:Name="pg" Margin="4"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <controls:Playground x:Name="pg" Margin="4" Grid.Row="1" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <controls:Score x:Name="Score" Grid.Column="1"/>
+            <Grid Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="5" Background="Green" Grid.Column="1" MouseUp="Border_MouseUp">
+                    <Viewbox Margin="5">
+                        <TextBlock Text="新游戏" Foreground="White" />
+                    </Viewbox>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

@@ -1,4 +1,4 @@
-﻿using System.Runtime.Remoting.Metadata.W3cXsd2001;
+﻿ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Windows;
 using Point = System.Drawing.Point;
@@ -18,9 +18,9 @@ namespace Hell1024.model
         public ActionType Type { get; set; }
         public Point Argument1 { get; set; }
         public Point Argument2 { get; set; }
-        public Point From { get { return Argument1; } }
-        public Point To { get { return Argument2; } }
-        public Point Position { get { return Argument1; } }
+        public Point From => Argument1;
+        public Point To => Argument2;
+        public Point Position => Argument1;
         public long Number { get; set; }
 
         protected Action()

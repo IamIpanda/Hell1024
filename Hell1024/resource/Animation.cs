@@ -43,7 +43,7 @@ namespace Hell1024.resource
             {
                 var obj = Application.Current.FindResource(str);
                 var st = obj as T;
-                return st == null ? null : st.Clone() as T;
+                return st?.Clone() as T;
             }
             catch (Exception ex)
             {

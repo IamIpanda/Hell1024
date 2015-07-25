@@ -1,6 +1,8 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Dynamic;
 using System.Linq;
+using System.Windows.Documents;
 
 namespace Hell1024.model
 {
@@ -49,6 +51,24 @@ namespace Hell1024.model
                 var y = i / Area.Width;
                 Value[x, y] = to_set_value[i];
             }
+        }
+
+        public void SetValue(string str)
+        {
+            var parameters = new List<long>();
+            foreach (var chr in str)
+            {
+                switch (chr)
+                {
+                    case 'O':
+                        parameters.Add(Core.None);
+                        break;
+                    case 'X':
+                        parameters.Add(Core.BackGround);
+                        break;
+                }
+            }
+            SetValue(parameters.ToArray());
         }
 
         public long this[int index]

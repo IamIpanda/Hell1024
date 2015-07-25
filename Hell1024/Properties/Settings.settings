@@ -5,8 +5,17 @@
     <Setting Name="AnimationSpeed" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.1</Value>
     </Setting>
-    <Setting Name="Setting" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="GameSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="DoorStatus" Type="System.String" Scope="User">
+      <Value Profile="(Default)">XOXXOOXXOX</Value>
+    </Setting>
+    <Setting Name="PassLimit" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="GenerateOnDoubleSide" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

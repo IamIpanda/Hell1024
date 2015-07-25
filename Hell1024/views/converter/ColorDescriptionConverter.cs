@@ -20,7 +20,7 @@ namespace Hell1024.views.converter
 
         static public model.ColorDescription SearchDescription(long num)
         {
-            return Application.Current.FindResource(string.Format("Color-{0}", num)) as model.ColorDescription;
+            return Application.Current.FindResource($"Color-{num}") as model.ColorDescription;
            
         }
     }

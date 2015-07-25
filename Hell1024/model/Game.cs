@@ -7,14 +7,14 @@ namespace Hell1024.model
     {
         protected Game()
         {
-            Core = new Core(5);
+            Core = new Core(Properties.Settings.Default.GameSize);
             Move = new Movement();
             Behave = new Behave(Move, Core);
             PositiveArea = new Rectangle(0, 0, Core.GameSize - 1, Core.GameSize - 1);
             NegativeArea = new Rectangle(Core.GameSize + 1, 0, Core.GameSize - 1, Core.GameSize - 1);
             DoorArea = new Rectangle(Core.GameSize, 0, 1, Core.GameSize);
             Door = new Door(Core, DoorArea, Move);
-            Door.SetValue(-1, -1, 0, -1, -1);
+            Door.SetValue(Properties.Settings.Default.DoorStatus);
             Door.Post();
             InitialParametrs = new Dictionary<List<long>, Rectangle>
             {
@@ -61,7 +61,7 @@ namespace Hell1024.model
 
         public void Generate()
         {
-            if (Door.FitTarget(-1, -1, 0, -1, -1))
+            if (Properties.Settings.Default.GenerateOnDoubleSide)
                 GenerateBothSide();
             else GenerateSingleSide();
         }
@@ -71,5 +71,6 @@ namespace Hell1024.model
             Behave.Clear(0);
             Behave.NewGame(InitialParametrs, 1);   
         }
+        
     }
 }

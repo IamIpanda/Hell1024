@@ -37,13 +37,49 @@ namespace Hell1024.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int GameSize {
             get {
-                return ((string)(this["Setting"]));
+                return ((int)(this["GameSize"]));
             }
             set {
-                this["Setting"] = value;
+                this["GameSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("XOXXOOXXOX")]
+        public string DoorStatus {
+            get {
+                return ((string)(this["DoorStatus"]));
+            }
+            set {
+                this["DoorStatus"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public long PassLimit {
+            get {
+                return ((long)(this["PassLimit"]));
+            }
+            set {
+                this["PassLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GenerateOnDoubleSide {
+            get {
+                return ((bool)(this["GenerateOnDoubleSide"]));
+            }
+            set {
+                this["GenerateOnDoubleSide"] = value;
             }
         }
     }

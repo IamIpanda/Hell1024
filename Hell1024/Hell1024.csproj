@@ -92,11 +92,17 @@
     <Compile Include="views\controls\Score.xaml.cs">
       <DependentUpon>Score.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\controls\ShadowButton.xaml.cs">
+      <DependentUpon>ShadowButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\converter\ColorDescriptionConverter.cs" />
     <Compile Include="views\converter\BlockVauePresetationConverter.cs" />
     <Compile Include="views\converter\ToStringConverter.cs" />
     <Compile Include="views\converter\PostiveBackgroundConverter.cs" />
     <Compile Include="views\converter\TimeConverter.cs" />
+    <Compile Include="views\dialog\setting_dialog.xaml.cs">
+      <DependentUpon>setting_dialog.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +140,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\controls\Score.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\controls\ShadowButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\dialog\setting_dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

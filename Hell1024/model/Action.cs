@@ -31,7 +31,7 @@ namespace Hell1024.model
             Number = 0;
         }
 
-        static public Action Appear(int position_x, int position_y, long number)
+        public static Action Appear(int position_x, int position_y, long number)
         {
             return new Action()
             {
@@ -41,7 +41,7 @@ namespace Hell1024.model
             };
         }
 
-        static public Action Disappear(int position_x, int position_y)
+        public static Action Disappear(int position_x, int position_y)
         {
             return new Action()
             {
@@ -51,7 +51,7 @@ namespace Hell1024.model
             };
         }
 
-        static public Action Move(int from_x, int from_y, int to_x, int to_y)
+        public static Action Move(int from_x, int from_y, int to_x, int to_y)
         {
             if (from_x == to_x && from_y == to_y)
                 return null;

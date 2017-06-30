@@ -19,4 +19,8 @@
         <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=4, RelativeSource={RelativeSource Self}}" />
         <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=4, RelativeSource={RelativeSource Self}}" />
     </Storyboard>
+
+    <DoubleAnimation x:Key="CountTo0" To="0" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=2, RelativeSource={RelativeSource Self}}" />
+    <DoubleAnimation x:Key="CountTo3" To="3" Duration="{Binding Converter={StaticResource Converter}, ConverterParameter=2, RelativeSource={RelativeSource Self}}" />
+    
 </ResourceDictionary>

@@ -38,11 +38,6 @@ namespace Hell1024.model
                     {
                         
                         var now_number = answer[x, y];
-                        // 反方向检查
-                        var predict = answer.LatestBlock(x, y, -x_move, -y_move);
-                        var predict_number = answer[predict.X, predict.Y];
-                        // 如果反方向上已经存在了一个负值，那么停止
-                        if (predict_number + now_number == 0) goto while_out;
                         // 取目标单元移动位置
                         var to = answer.LatestBlock(x, y, x_move, y_move);
                         var to_number = answer[to.X, to.Y];
@@ -66,6 +61,11 @@ namespace Hell1024.model
                         }
                         else
                         {
+                            // 反方向检查
+                            var predict = answer.LatestBlock(x, y, -x_move, -y_move);
+                            var predict_number = answer[predict.X, predict.Y];
+                            // 如果反方向上已经存在了一个负值，那么停止
+                            if (predict_number + now_number == 0) goto while_out;
                             // 移动
                             to.Offset(-x_move, -y_move);
                             answer.Execute(TargetMovement.Move(x, y, to.X, to.Y));

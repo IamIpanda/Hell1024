@@ -29,6 +29,9 @@ namespace Hell1024
             var c = Game.Instance.Core;
             pg.Value = c;
             Game.Instance.NewGame();
+            Game.Instance.Move.Appear(0, 0, 4, 2);
+            Game.Instance.Move.Appear(0, 1, -4, 2);
+            Game.Instance.Move.Appear(0, 2, 4, 2);
             pg.ExecuteAnimationList();
         }
 

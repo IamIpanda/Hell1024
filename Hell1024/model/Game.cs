@@ -14,7 +14,7 @@ namespace Hell1024.model
             NegativeArea = new Rectangle(Core.GameSize + 1, 0, Core.GameSize - 1, Core.GameSize - 1);
             DoorArea = new Rectangle(Core.GameSize, 0, 1, Core.GameSize);
             Door = new Door(Core, DoorArea, Move);
-            Door.SetValue(Properties.Settings.Default.DoorStatus);
+            // Door.SetValue(Properties.Settings.Default.DoorStatus);
             Door.Post();
             InitialParametrs = new Dictionary<List<long>, Rectangle>
             {
@@ -26,7 +26,7 @@ namespace Hell1024.model
         {
             Instance = new Game();
         }
-        static public Game Instance { get; private set; }
+        public static Game Instance { get; private set; }
         public Core Core { get; set; }
         public Movement Move { get; set; }
         public Behave Behave { get; set; }
